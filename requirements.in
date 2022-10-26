@@ -1,1 +1,10 @@
-flask
+Flask
+
+# Testing libraries
+pytest
+coverage
+
+#Build and install: https://flask.palletsprojects.com/en/2.2.x/tutorial/deploy/
+# wheel
+# flaskr-1.0.0-py3-none-any.whl
+# waitress

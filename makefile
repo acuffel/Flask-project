@@ -11,12 +11,23 @@ install: ## Installs production dependencies.
 	venv/bin/pip install -r requirements.txt
 	rm -rf ~/.cache/pip
 
-
 .PHONY: requirements
 requirements: ## Builds or updates requirements.
 	venv/bin/pip install --upgrade pip wheel setuptools pip-tools
 	venv/bin/pip-compile --upgrade requirements.in
-	venv/bin/pip-compile --upgrade dev-requirements.in
+	
+.PHONY: init_db
+init-db: ## Builds or updates requirements.
+	venv/bin/flask --app flaskr init-db
+
+.PHONY: run_debug_server
+run-debug-server: ## Builds or updates requirements.
+	venv/bin/flask --app flaskr --debug run
+
+.PHONY: tests
+tests: ## Builds or updates requirements.
+	venv/bin/coverage run -m pytest
+	venv/bin/coverage report
 
 .PHONY: help
 help: ## Lists all the available commands.
